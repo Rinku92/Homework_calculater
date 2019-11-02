@@ -13,5 +13,10 @@ class MyTestCase(unittest.TestCase):
         for row in my_list:
          self.assertEqual(self.calculator.add(int(row[0]),int(row[1])), int(row[2]))
 
+    def test_subtraction(self):
+             my_list = read('/src/Unit_Test_Subtraction.csv')
+             for row in my_list:
+                 self.assertEqual(self.calculator.sub(int(row[0]), int(row[1])), int(row[2]))
+
 if __name__ == '__main__':
     unittest.main()
