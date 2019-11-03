@@ -28,6 +28,10 @@ class MyTestCase(unittest.TestCase):
         for row in my_list:
             self.assertEqual(self.calculator.div(int(row[0]), int(row[1])), float(row[2]))
 
+    def test_square(self):
+        my_list = read('/src/Unit_Test_Square.csv')
+        for row in my_list:
+            self.assertEqual(self.calculator.squ(int(row[0])), int(row[1]))
 
 if __name__ == '__main__':
     unittest.main()

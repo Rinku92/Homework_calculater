@@ -14,6 +14,10 @@ def division(a,b):
     c= b/a
     return round(c,9)
 
+def square(a):
+    c=a*a
+    return c
+
 class Calculator:
     result = 0
 
@@ -31,4 +35,7 @@ class Calculator:
 
     def div(self,a,b):
         return division(a, b)
+
+    def squ(self, a):
+        return square(a)
 
