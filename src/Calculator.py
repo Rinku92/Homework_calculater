@@ -10,6 +10,10 @@ def multiplication(a,b):
     c= a * b
     return  c
 
+def division(a,b):
+    c= b/a
+    return round(c,9)
+
 class Calculator:
     result = 0
 
@@ -24,4 +28,7 @@ class Calculator:
 
     def mul(self, a, b):
         return multiplication(a, b)
+
+    def div(self,a,b):
+        return division(a, b)
 
