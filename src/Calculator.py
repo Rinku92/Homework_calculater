@@ -1,3 +1,6 @@
+import math
+from decimal import Decimal, getcontext
+
 def addition(a, b):
     c = a + b
     return c
@@ -17,6 +20,11 @@ def division(a,b):
 def square(a):
     c=a*a
     return c
+
+def squareroot(a):
+    getcontext().prec = 10
+    c = math.sqrt(Decimal(a))
+    return +Decimal(c)
 
 class Calculator:
     result = 0
@@ -38,4 +46,7 @@ class Calculator:
 
     def squ(self, a):
         return square(a)
+
+    def sqr(self,a):
+        return squareroot(a)
 

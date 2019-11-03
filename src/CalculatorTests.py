@@ -1,6 +1,7 @@
 import unittest
 from Calculator import Calculator
 from CSVReader import read
+from decimal import Decimal
 
 class MyTestCase(unittest.TestCase):
     calculator = Calculator()
@@ -32,6 +33,11 @@ class MyTestCase(unittest.TestCase):
         my_list = read('/src/Unit_Test_Square.csv')
         for row in my_list:
             self.assertEqual(self.calculator.squ(int(row[0])), int(row[1]))
+
+    def test_squareroot(self):
+                my_list = read('/src/Unit_Test_Squareroot.csv')
+                for row in my_list:
+                    self.assertEqual(self.calculator.sqr(int(row[0])), Decimal(row[1]))
 
 if __name__ == '__main__':
     unittest.main()
