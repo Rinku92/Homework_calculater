@@ -6,4 +6,5 @@ def read(path):
     my_list = list()
     for row in csv_reader:
         my_list.append(row)
+        #pprint(row)
     return my_list
