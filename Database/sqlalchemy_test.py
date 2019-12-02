@@ -4,9 +4,9 @@ from sqlalchemy import create_engine
 from sqlalchemy.orm import Session
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import relationship
-
-
+from pprint import pprint
 from datetime import datetime
+
 engine = create_engine("sqlite:////web/Sqlite-Data/example.db")
 Base = declarative_base()
 session = Session(bind=engine)
@@ -141,3 +141,4 @@ session.add_all([o3])
 
 session.commit()
 
+pprint(session.query(Customer).all())
