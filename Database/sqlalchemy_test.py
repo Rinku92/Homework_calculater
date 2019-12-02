@@ -2,10 +2,11 @@ from sqlalchemy import create_engine, MetaData, Table, Integer, String, \
     Column, DateTime, ForeignKey, Numeric, CheckConstraint
 from sqlalchemy.ext.declarative import declarative_base
 from datetime import datetime
+from sqlalchemy.orm import sessionmaker, Session
 
 metadata = MetaData()
 engine = create_engine('sqlite:////web/Sqlite-Data/example.db')
-
+Session = sessionmaker(bind=engine)
 Base = declarative_base()
 
 customers = Table('customers', metadata,
@@ -36,4 +37,10 @@ orders = Table('orders', metadata,
                Column('date_shipped', DateTime())
                )
 
+order_lines = Table('order_lines', metadata,
+    Column('id', Integer(), primary_key=True),
+    Column('order_id', ForeignKey('orders.id')),
+    Column('item_id', ForeignKey('items.id')),
+    Column('quantity', Integer())
+)
 metadata.create_all(engine)
