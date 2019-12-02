@@ -29,4 +29,11 @@ items = Table('items', metadata,
               CheckConstraint('quantity > 0', name='quantity_check')
               )
 
+orders = Table('orders', metadata,
+               Column('id', Integer(), primary_key=True),
+               Column('customer_id', ForeignKey('customers.id')),
+               Column('date_placed', DateTime(), default=datetime.now),
+               Column('date_shipped', DateTime())
+               )
+
 metadata.create_all(engine)
