@@ -141,4 +141,6 @@ session.add_all([o3])
 
 session.commit()
 
-pprint(session.query(Customer).all())
+session.query(Customer).all()
+session.query(Item).all()
+session.query(Order).all()
