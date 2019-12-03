@@ -8,6 +8,7 @@ from pprint import pprint
 from datetime import datetime
 from sqlalchemy import *
 from sqlalchemy import desc
+from sqlalchemy import func
 from sqlalchemy.exc import IntegrityError
 
 
@@ -203,3 +204,8 @@ session.query(
     Customer.first_name,
     Order.id,
 ).outerjoin(Order).all()
+
+session.query(func.count(Customer.id)).join(Order).filter(
+    Customer.first_name == 'John',
+    Customer.last_name == 'Green',
+).group_by(Customer.id).scalar()
