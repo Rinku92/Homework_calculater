@@ -148,6 +148,10 @@ session.query(Customer).all()
 session.query(Item).all()
 session.query(Order).all()
 
-pprint(session.query(Customer).count())
-pprint(session.query(Item).count())
-pprint(session.query(Order).count())
+session.query(Customer).count()
+session.query(Item).count()
+session.query(Order).count()
+
+session.query(Customer).first()
+session.query(Item).first()
+session.query(Order).first()
