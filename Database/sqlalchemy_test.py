@@ -9,6 +9,7 @@ from datetime import datetime
 from sqlalchemy import *
 from sqlalchemy import desc
 from sqlalchemy import func
+from sqlalchemy import distinct
 from sqlalchemy.exc import IntegrityError
 
 
@@ -214,3 +215,11 @@ session.query(
     func.count("*").label('town_count'),
     Customer.town
 ).group_by(Customer.town).having(func.count("*") > 2).all()
+
+session.query(Customer.town).filter(Customer.id < 10).all()
+session.query(Customer.town).filter(Customer.id < 10).distinct().all()
+
+session.query(
+    func.count(distinct(Customer.town)),
+    func.count(Customer.town)
+).all()
