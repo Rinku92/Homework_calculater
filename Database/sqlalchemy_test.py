@@ -210,7 +210,7 @@ session.query(func.count(Customer.id)).join(Order).filter(
     Customer.last_name == 'Green',
 ).group_by(Customer.id).scalar()
 
-pprint(session.query(
+session.query(
     func.count("*").label('town_count'),
     Customer.town
-).group_by(Customer.town).having(func.count("*") > 2).all())
+).group_by(Customer.town).having(func.count("*") > 2).all()
