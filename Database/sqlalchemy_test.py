@@ -10,6 +10,7 @@ from sqlalchemy import *
 from sqlalchemy import desc
 from sqlalchemy import func
 from sqlalchemy import distinct
+from sqlalchemy import text
 from sqlalchemy import cast, Date, distinct, union
 from sqlalchemy.exc import IntegrityError
 
@@ -240,3 +241,8 @@ session.query(Item).filter(
     Item.name.ilike("W%")
 ).delete(synchronize_session='fetch')
 session.commit()
+
+session.query(Customer).filter(text("first_name = 'John'")).all()
+session.query(Customer).filter(text("town like 'Nor%'")).all()
+session.query(Customer).filter(text("town like 'Nor%'")).order_by(text("first_name, id desc")).all()
+
