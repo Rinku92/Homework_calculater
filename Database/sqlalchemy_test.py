@@ -163,20 +163,26 @@ session.query(Order).get(150)
 
 session.query(Customer).filter(Customer.first_name == 'John').all()
 session.query(Customer).filter(Customer.id <= 5, Customer.town == "Norfolk").all()
-pprint(session.query(Customer).filter(or_(
+session.query(Customer).filter(or_(
     Customer.town == 'Peterbrugh',
     Customer.town == 'Norfolk'
-)).all())
+)).all()
 
-pprint(session.query(Customer).filter(and_(
+session.query(Customer).filter(and_(
     Customer.first_name == 'John',
     Customer.town == 'Norfolk'
 )).all()
- )
 
-pprint(session.query(Customer).filter(and_(
+
+session.query(Customer).filter(and_(
     Customer.first_name == 'John',
     not_(
         Customer.town == 'Peterbrugh',
     )
-)).all())
+)).all()
+
+session.query(Customer).filter(Customer.first_name.notin_(['Toby', 'Sarah'])).all()
+session.query(Item).filter(Item.cost_price.between(10, 50)).all()
+session.query(Item).filter(not_(Item.cost_price.between(10, 50))).all()
+session.query(Item).filter(Item.name.like("%r")).all()
+session.query(Item).filter(not_(Item.name.like("W%"))).all()
