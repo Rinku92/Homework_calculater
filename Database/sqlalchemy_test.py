@@ -7,6 +7,7 @@ from sqlalchemy.orm import relationship
 from pprint import pprint
 from datetime import datetime
 from sqlalchemy import *
+from sqlalchemy import desc
 from sqlalchemy.exc import IntegrityError
 
 
@@ -191,3 +192,7 @@ session.query(Customer).limit(2).all()
 session.query(Customer).filter(Customer.address.ilike("%avenue")).limit(2).all()
 
 session.query(Customer).limit(2).offset(2).all()
+
+session.query(Item).filter(Item.name.ilike("wa%")).all()
+session.query(Item).filter(Item.name.ilike("wa%")).order_by(Item.cost_price).all()
+session.query(Item).filter(Item.name.ilike("wa%")).order_by(desc(Item.cost_price)).all()
