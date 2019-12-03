@@ -6,6 +6,9 @@ from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import relationship
 from pprint import pprint
 from datetime import datetime
+from sqlalchemy import *
+from sqlalchemy.exc import IntegrityError
+
 
 engine = create_engine("sqlite:////web/Sqlite-Data/example.db")
 Base = declarative_base()
@@ -144,3 +147,7 @@ session.commit()
 session.query(Customer).all()
 session.query(Item).all()
 session.query(Order).all()
+
+pprint(session.query(Customer).count())
+pprint(session.query(Item).count())
+pprint(session.query(Order).count())
